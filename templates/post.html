@@ -5,5 +5,20 @@ Post
 {% endblock title %}
 
 {% block content %}
-<h1>{{ post }}</h1>
+    <h1> Информация о статье </h1>
+    <hr>
+    {% if post %}
+        <table>
+            <tr>
+                <td>heading</td>
+                <td>date_post</td>
+                <td>content</td>
+            </tr>
+            <tr>
+                <td>{{ post.heading }}</td>
+                <td>{{ post.date_post|date:'D m Y' }}</td>
+                <td>{{ post.content }}</td>
+            </tr>
+        </table>
+    {% endif %}
 {% endblock content %}
