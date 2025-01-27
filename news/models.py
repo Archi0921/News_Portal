@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
+from django.urls import reverse
 
 class Author(models.Model):
     rating_author = models.IntegerField(default=1)
@@ -45,6 +47,9 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.heading.title()}:{self.content[:10]}'
+
+    def get_absolute_url(self):
+        return reverse('post_create')
 
 class PostCategory(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
